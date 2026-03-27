@@ -19,9 +19,8 @@
         function displayDate() {
             const today = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById("date").innerHTML =
-                "Today is: " + today.toLocaleDateString('en-US', options);
-            document.getElementById("review-section").scrollIntoView({ behavior: "smooth" });
+            document.getElementById("reviewOutput").innerHTML = reviewHtml;
+document.getElementById("review-section").scrollIntoView({ behavior: "smooth" });
         }
     </script>
 </head>
