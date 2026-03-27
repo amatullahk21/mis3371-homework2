@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    Program name: homework2.html
+    Author: Amatullah Kanchwala
+    Date created: 03/27/2026
+    Version: 1.0
+    Description: Patient registration form with validation and review feature.
+    -->
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Medical - Homework 2</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+    <script>
+        function displayDate() {
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById("date").innerHTML =
+                "Today is: " + today.toLocaleDateString('en-US', options);
+        }
+    </script>
+</head>
+
+<body onload="displayDate()">
+
+<!-- HEADER -->
+<div id="header">
+    <img src="logo.png" id="logo">
+    <h1>Horizon Medical</h1>
+    <p id="date"></p>
+</div>
+
+<!-- FORM -->
+<div id="main-content">
+    <h2>Patient Registration Form</h2>
+
+    <form id="form">
+
+        <table>
+
+            <tr>
+                <td>First Name:</td>
+                <td>
+                    <input type="text" id="fname"
+                    title="Letters only, max 30 characters"
+                    pattern="[A-Za-z'-]{1,30}" required>
+                </td>
+
+                <td>Last Name:</td>
+                <td>
+                    <input type="text" id="lname"
+                    title="Letters, numbers 2-5, dash allowed"
+                    pattern="[A-Za-z2-5'-]{1,30}" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Email:</td>
+                <td>
+                    <input type="email" id="email"
+                    title="Format: name@domain.com"
+                    required>
+                </td>
+
+                <td>Phone:</td>
+                <td>
+                    <input type="text" id="phone"
+                    placeholder="123-456-7890"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Health (1–10):</td>
+                <td colspan="3">
+                    <input type="range" id="health" min="1" max="10" oninput="updateSlider(this.value)">
+                    <span id="healthValue">5</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>User ID:</td>
+                <td>
+                    <input type="text" id="userid"
+                    pattern="[a-zA-Z][a-zA-Z0-9_-]{4,29}"
+                    title="5-30 characters, no spaces">
+                </td>
+
+                <td>Password:</td>
+                <td>
+                    <input type="password" id="password">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Confirm Password:</td>
+                <td>
+                    <input type="password" id="confirmPassword">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="4" class="button-row">
+                    <button type="button" onclick="reviewForm()">Review</button>
+                    <input type="reset" value="Clear">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+
+<!-- REVIEW SECTION -->
+<div id="review-section">
+    <h2>Review Your Information</h2>
+    <p id="reviewOutput"></p>
+</div>
+
+<!-- FOOTER -->
+<div id="footer">
+    <p>Horizon Medical</p>
+</div>
+
+</body>
+</html>
